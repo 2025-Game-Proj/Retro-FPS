@@ -515,7 +515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuUI
   fader: {fileID: 0}
   fadeDuration: 0.25
-  gameSceneName: CriticalAssaultUnit(MainGame)
+  gameSceneName: HowToPlay
 --- !u!4 &1456620816
 Transform:
   m_ObjectHideFlags: 0
