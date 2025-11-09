@@ -4,11 +4,14 @@ using UnityEngine.SceneManagement;
 public class MainMenuUI : MonoBehaviour
 {
     [Header("Scenes")]
-    [SerializeField] private string gameSceneName = "Game";
+    //[SerializeField] private string gameSceneName = "Game";
 
     [Header("Optional Fade")]
     [SerializeField] private CanvasGroup fader; // 없으면 null로 둬도 됨
     [SerializeField] private float fadeDuration = 0.25f;
+
+    // 인스펙터에서 게임 씬 이름을 넣어두면 안전
+    [SerializeField] private string gameSceneName = "MainGame";
 
     public void OnClickStart()
     {
@@ -16,6 +19,18 @@ public class MainMenuUI : MonoBehaviour
             StartCoroutine(LoadWithFade());
         else
             SceneManager.LoadScene(gameSceneName);
+    }
+
+    // (선택) 비동기 로드 예시
+    public void OnClickStartAsync()
+    {
+        StartCoroutine(LoadAsync());
+    }
+    private System.Collections.IEnumerator LoadAsync()
+    {
+        var op = SceneManager.LoadSceneAsync(gameSceneName, LoadSceneMode.Single);
+        op.allowSceneActivation = true;
+        while (!op.isDone) yield return null;
     }
 
     public void OnClickQuit()
