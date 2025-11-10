@@ -24,16 +24,24 @@ public class Rifle : MonoBehaviour
     public int attack = 10;
     public float range = 50.0f;
     private Vector3 initialPosition;
+    private LayerMask playerMask;
 
     void Start()
     {
         Reset();
         initialPosition = transform.localPosition;
-        for(int i = 0; i < poolCapacity; i++)
+        for (int i = 0; i < poolCapacity; i++)
         {
             hitParticlePool[i] = Instantiate(hitPrefab);
             hitParticlePool[i].gameObject.SetActive(false);
         }
+        if (source != null)
+        {
+            source.clip = GunShotClip;
+        }
+        int mask = LayerMask.GetMask("Player", "Item");
+        playerMask = ~mask;
+
     }
     public void Reset()
     {
@@ -57,7 +65,14 @@ public class Rifle : MonoBehaviour
         timeLastFired = Time.time;
         ammo--;
         muzzlePrefab.Play();
-        if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, range))
+        if(source != null)
+        {
+            if (source.transform.IsChildOf(transform))
+            {
+                source.Play();
+            }
+        }
+        if(Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out RaycastHit hit, range, playerMask))
         {
             if(hit.collider.TryGetComponent(out EnemyHealth hp))
             {

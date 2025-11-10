@@ -426,6 +426,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assault_Rifle
       objectReference: {fileID: 0}
+    - target: {fileID: 4760258545781565630, guid: 8c3468a7b54af824e9ba00e6a98b7790, type: 3}
+      propertyPath: m_Volume
+      value: 0.512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
