@@ -9,7 +9,10 @@ public class Gun : MonoBehaviour
     public float verticalRange = 20f;    // 총의 수직 범위 (위아래 범위)
 
     public float damage = 2f;
-    public float fireRate;    // 발사 속도 (초 단위로 다음 발사까지의 대기 시간)
+    public float fireRate = 1f;    // 발사 속도 (초 단위로 다음 발사까지의 대기 시간)
+
+
+    public float gunShotRadius = 20.0f;
 
     private float nextTimeToFire;   // 다음 발사 가능 시간
 
@@ -19,6 +22,7 @@ public class Gun : MonoBehaviour
     public EnemyManager enemyManager;
 
     public LayerMask raycastLayerMask;     // 레이캐스트가 충돌 검사할 레이어 마스크
+    public LayerMask enemyLayerMask;
 
     // 시작 시 호출되는 함수
     void Start()
@@ -43,6 +47,15 @@ public class Gun : MonoBehaviour
 
     void Fire()
     {
+
+        Collider[] enemyColliders;
+        enemyColliders = Physics.OverlapSphere(transform.position, gunShotRadius, enemyLayerMask);
+
+        foreach (var enemyCollider in enemyColliders)
+        {
+            enemyCollider.GetComponent<EnemyAwareness>().isAggro = true;
+        }
+
         // 트리거 영역 내의 모든 적에 대해 처리
         foreach (var enemy in enemyManager.enemiesInTrigger)
         {
@@ -62,10 +75,6 @@ public class Gun : MonoBehaviour
 
                     enemy.TakeDamage(damage);
 
-
-                    Debug.DrawRay(transform.position, dir, Color.green);  // 디버그용: 레이를 녹색으로 그려서 시각화
-
-                    Debug.Break();    // 디버그용: 게임 일시정지 (테스트 목적)
                 }
             }
         }
