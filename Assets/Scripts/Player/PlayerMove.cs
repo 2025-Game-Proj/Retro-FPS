@@ -37,6 +37,8 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (PauseManagerInputSystem.IsPaused)
+            return;
 
         GetInput();
 
