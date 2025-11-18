@@ -26,6 +26,9 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        if (PauseManagerInputSystem.IsPaused)
+            return;
+
         // 마우스 입력 받기
         GetInput();
 

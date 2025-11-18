@@ -12,8 +12,23 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/HowToPlay.unity
     guid: 68850b2b23e8a584d93b8f4374647969
   - enabled: 1
+    path: Assets/Scenes/CriticalAssaultUnit.unity
+    guid: faa744620abf9554c85b5a6a4b8d8655
+  - enabled: 1
     path: Assets/Scenes/CriticalAssaultUnit(MainMap).unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/CriticalAssaultUnit(MainGame).unity
+    guid: 6ae662c778cc3504eb5b39990e19c7a9
+  - enabled: 1
+    path: Assets/Scenes/CriticalAssaultUnit-Gun.unity
+    guid: 60036cb2df38ce6408537368b7666717
+  - enabled: 1
+    path: Assets/Scenes/Menus/GameOver.unity
+    guid: 0b28b4fbfcfd09140a121d6c6ba32493
+  - enabled: 1
+    path: Assets/Scenes/Menus/GameClear.unity
+    guid: a8eefa52380f7d54d92532099126879f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
