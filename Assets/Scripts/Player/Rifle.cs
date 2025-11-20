@@ -34,6 +34,7 @@ public class Rifle : MonoBehaviour
     private bool reload = false;
     private Vector3 initialPosition;
     private LayerMask playerMask;
+    private int coin = 0;
 
     void Start()
     {
@@ -51,6 +52,7 @@ public class Rifle : MonoBehaviour
         int mask = LayerMask.GetMask("Player", "Item");
         playerMask = ~mask;
         anim = GetComponent<Animator>();
+        coin = 0;
     }
     public void Reset()
     {
@@ -136,6 +138,15 @@ public class Rifle : MonoBehaviour
     public void AddAmmo(int amount)
     {
         ammo = Mathf.Min(ammo + amount, maxAmmo);
+    }
+    public void AddCoin()
+    {
+        coin++;
+        if(coin % 10 == 0)
+        {
+            AddAttack(5);
+            AddShotSpeed(0.3f);
+        }
     }
     public void AddAttack(int amount)
     {
