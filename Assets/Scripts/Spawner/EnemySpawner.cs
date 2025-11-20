@@ -7,9 +7,8 @@ public class EnemySpawner : MonoBehaviour
     private GameObject[] spawnPoints;
     private int maxEnemyCount = 20;
     private int curEnemyCount = 0;
-    private int bossAppear = 1;
-    public Transform bossPosition;
-    private float spawnPeriod = 30f;
+    private int bossAppear = 2;
+    private float spawnPeriod = 5f;
     private int killedEnemy = 0;
     public EnemyHealth enemyPrefab;
     private WaitForSeconds wait;
@@ -36,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
                         killedEnemy++;
                         if(killedEnemy == bossAppear)
                         {
-                            EnemyHealth boss = Instantiate(enemyPrefab, bossPosition.position, bossPosition.rotation);
+                            EnemyHealth boss = Instantiate(enemyPrefab, transform.position, transform.rotation);
                             boss.transform.localScale *= 2;
                             boss.SetMaxHealth(200);
                             boss.onDeath += OnBossDeath;
