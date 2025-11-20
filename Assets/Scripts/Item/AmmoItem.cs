@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AmmoItem : Item
 {
-    private int ammo = 50;
+    private int ammo = 30;
     public void SetAmmo(int amount)
     {
         ammo = amount;

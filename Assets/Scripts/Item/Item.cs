@@ -33,4 +33,12 @@ public abstract class Item : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public delegate void DestroyCallback();
+    public event DestroyCallback onDestroy;
+    private void OnDestroy() {
+        if(onDestroy != null)
+        {
+            onDestroy.Invoke();
+        }
+    }
 }
