@@ -23,10 +23,15 @@ public class EnemyAI : MonoBehaviour
         playerTransform = FindFirstObjectByType<PlayerMove>().transform;
         enemyNavMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();  // Get the Animator component
+
+
     }
 
     private void Update()
     {
+        if (!enemyNavMeshAgent.enabled)   // ← ADD THIS
+            return;
+
         float dist = Vector3.Distance(transform.position, playerTransform.position);
 
         if (enemyAwareness.isAggro)
@@ -46,9 +51,8 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            // Not aggro → idle
-            enemyNavMeshAgent.speed = runSpeed;
-            enemyNavMeshAgent.SetDestination(transform.position);
+            enemyNavMeshAgent.isStopped = true;     // ← STOP NavMesh movement fully
+            enemyNavMeshAgent.ResetPath();          // ← Clear pathfinding
         }
 
         UpdateAnimator();
@@ -61,7 +65,7 @@ public class EnemyAI : MonoBehaviour
         if (playerTransform == null) return;
 
         // Call the player's health script (change PlayerHealth to your script name)
-        playerTransform.GetComponent<PlayerHealth>().ApplyDamage(10);
+        playerTransform.GetComponent<PlayerHealth>().ApplyDamage(3);
     }
 
 
