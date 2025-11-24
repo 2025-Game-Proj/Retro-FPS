@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private int maxEnemyCount = 35;
     private int curEnemyCount = 0;
     private int bossAppear = 30;
-    private float spawnPeriod = 5f;
+    private float spawnPeriod = 30f;
     private int killedEnemy = 0;
     public EnemyHealth enemyPrefab;
     private WaitForSeconds wait;
@@ -27,6 +28,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 foreach (GameObject obj in spawnPoints)
                 {
+                    if(curEnemyCount >= maxEnemyCount)
+                    {
+                        break;
+                    }
                     float spread = 3f; // increase this for even more spacing
 
                     Vector3 offset = new Vector3(
@@ -36,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
                     );
 
                     EnemyHealth enemy = Instantiate(enemyPrefab, obj.transform.position + offset, obj.transform.rotation);
-                    enemy.SetMaxHealth(50);
+                    enemy.SetMaxHealth(18);
                     enemy.onDeath += () =>
                     {
                         curEnemyCount--;
@@ -45,19 +50,22 @@ public class EnemySpawner : MonoBehaviour
                         {
                             EnemyHealth boss = Instantiate(enemyPrefab, transform.position, transform.rotation);
                             boss.transform.localScale *= 2;
-                            boss.SetMaxHealth(200);
+                            boss.SetMaxHealth(500);
                             boss.onDeath += OnBossDeath;
                         }
                     };
+
+                    curEnemyCount ++;
                 }
-                curEnemyCount += spawnPoints.Length;
+                //curEnemyCount += spawnPoints.Length;
             }
             yield return wait;
         }
     }
     private void OnBossDeath()
     {
-        Debug.Log("Clear");
+        // Debug.Log("Clear");
+        SceneManager.LoadScene("GameClear");
     }
     private void OnDestroy()
     {

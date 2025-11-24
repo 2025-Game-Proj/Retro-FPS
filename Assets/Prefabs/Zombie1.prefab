@@ -1496,7 +1496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
   attackRange: 3
   attackCooldown: 1.2
-  runSpeed: 7.5
+  runSpeed: 7
 --- !u!195 &5603708734511601309
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1507,7 +1507,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7.5
+  m_Speed: 7
   m_Acceleration: 200
   avoidancePriority: 50
   m_AngularSpeed: 4000
@@ -1531,8 +1531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc5d93d474a1064fb6d86632c852df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 10
+  currentHealth: 10
   coinPrefab: {fileID: 7503796150476060782, guid: a4d82a009585b22409e7dc14be1cb08f, type: 3}
 --- !u!1 &3911337488075349733
 GameObject:

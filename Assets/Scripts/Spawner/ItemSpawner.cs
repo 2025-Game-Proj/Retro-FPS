@@ -9,7 +9,7 @@ public class ItemSpawner : MonoBehaviour
     public int maxItemCount = 15;   // 🔹 Limit on how many items can exist
     private int currentItemCount = 0;
 
-    private float itemSpawnPeriod = 13f;
+    private float itemSpawnPeriod = 5f;
     private WaitForSeconds wait;
 
     private GameObject[] itemSpawnPoints;

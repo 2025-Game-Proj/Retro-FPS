@@ -26,11 +26,9 @@ MonoBehaviour:
     m_path: Assets/Scenes/Menus/HowToPlay.unity
   - m_enabled: 1
     m_path: Assets/Scenes/CriticalAssaultUnit(MainGame).unity
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/CriticalAssaultUnit.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/CriticalAssaultUnit(MainMap).unity
-  - m_enabled: 1
+  - m_enabled: 0
     m_path: Assets/Scenes/CriticalAssaultUnit-Gun.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Menus/GameOver.unity

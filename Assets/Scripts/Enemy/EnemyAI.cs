@@ -65,7 +65,7 @@ public class EnemyAI : MonoBehaviour
         if (playerTransform == null) return;
 
         // Call the player's health script (change PlayerHealth to your script name)
-        playerTransform.GetComponent<PlayerHealth>().ApplyDamage(3);
+        playerTransform.GetComponent<PlayerHealth>().ApplyDamage(2);
     }
 
 
