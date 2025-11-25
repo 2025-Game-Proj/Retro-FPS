@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
                         {
                             EnemyHealth boss = Instantiate(enemyPrefab, transform.position, transform.rotation);
                             boss.transform.localScale *= 2;
-                            boss.SetMaxHealth(500);
+                            boss.SetMaxHealth(300);
                             boss.onDeath += OnBossDeath;
                         }
                     };
@@ -65,6 +65,10 @@ public class EnemySpawner : MonoBehaviour
     private void OnBossDeath()
     {
         // Debug.Log("Clear");
+        if (TimerManager.Instance != null)
+        {
+            TimerManager.Instance.StopTimer();
+        }
         SceneManager.LoadScene("GameClear");
     }
     private void OnDestroy()
