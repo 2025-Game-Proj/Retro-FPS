@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private GameObject[] spawnPoints;
     private int maxEnemyCount = 35;
     private int curEnemyCount = 0;
-    private int bossAppear = 30;
+    private int bossAppear = 20;
     private float spawnPeriod = 30f;
     private int killedEnemy = 0;
     public EnemyHealth enemyPrefab;
@@ -68,6 +69,17 @@ public class EnemySpawner : MonoBehaviour
         if (TimerManager.Instance != null)
         {
             TimerManager.Instance.StopTimer();
+            float finishTime = TimerManager.Instance.GetElapsedTime();
+
+            if (!BestTimeManager.HasBestTime() || finishTime < BestTimeManager.GetBestTime())
+            {
+                UnityEngine.Debug.Log($"New Record! Old Best: {BestTimeManager.GetBestTime()}, New Best: {finishTime}");
+                BestTimeManager.SaveBestTime(finishTime);
+            }
+            else
+            {
+                UnityEngine.Debug.Log($"Current: {finishTime}, Best: {BestTimeManager.GetBestTime()}");
+            }
         }
         SceneManager.LoadScene("GameClear");
     }
