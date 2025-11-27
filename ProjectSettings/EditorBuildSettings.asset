@@ -29,6 +29,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/GameClear.unity
     guid: a8eefa52380f7d54d92532099126879f
+  - enabled: 1
+    path: Assets/Scenes/CriticalAssaultUnit(Demo).unity
+    guid: a9fb2dcff1beed948b52c136da664b30
+  - enabled: 1
+    path: Assets/Scenes/Menus/GameClear(Demo).unity
+    guid: 453c98670c744a742b4a149a5146584b
+  - enabled: 1
+    path: Assets/Scenes/Menus/GameOver(Demo).unity
+    guid: 16eb3cc611f224e48a6c30dec110b91a
+  - enabled: 1
+    path: Assets/Scenes/Menus/HowToPlay(Demo).unity
+    guid: aea4282e4ac90f5489190bcc6bd4eeba
+  - enabled: 1
+    path: Assets/Scenes/Menus/MainMenu(Demo).unity
+    guid: 484d9d86486bd294e9c1aa4d895cd48e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
